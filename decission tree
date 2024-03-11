@@ -1,0 +1,35 @@
+pip install scikit-learn
+from sklearn import tree
+
+# Sample training data
+# Format: [feature1, feature2, ..., label]
+training_data = [
+    [0, 0, 'No'],
+    [1, 0, 'Yes'],
+    [1, 1, 'Yes'],
+    [0, 1, 'No'],
+]
+
+# Separate features and labels
+features = [row[:-1] for row in training_data]
+labels = [row[-1] for row in training_data]
+
+# Create a decision tree classifier
+clf = tree.DecisionTreeClassifier()
+
+# Train the classifier
+clf = clf.fit(features, labels)
+
+# Sample test data
+# Format: [feature1, feature2, ...]
+test_data = [
+    [0, 1],
+    [1, 0],
+]
+
+# Make predictions
+predictions = clf.predict(test_data)
+
+# Display predictions
+for i, prediction in enumerate(predictions):
+    print(f"Test {i + 1}: Predicted outcome - {prediction}")
